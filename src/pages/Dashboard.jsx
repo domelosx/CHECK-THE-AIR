@@ -16,7 +16,7 @@ export default function Dashboard() {
     const refresh = useCallback(async () => {
         try {
             const data = await listRotas("active");
-            setRotas(data);
+            setRotas(Array.isArray(data) ? data : data?.data || []);
         } catch (e) {
             toast.error("Error");
         } finally {
